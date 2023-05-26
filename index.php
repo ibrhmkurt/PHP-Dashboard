@@ -48,7 +48,23 @@ define("SITE", $siteURL);
   include_once(DATA."navbar.php");
   include_once(DATA."menu.php");
 
-  include_once(PAGE."home.php");
+  if ($_GET && !empty($_GET["page"]))
+  {
+      $page = $_GET["page"].".php";
+      if (file_exists(PAGE.$page))
+      {
+          include_once(PAGE.$page);
+      }
+      else
+      {
+          include_once(PAGE."home.php");
+      }
+  }
+  else
+  {
+      include_once(PAGE."home.php");
+  }
+
 
   include_once(DATA."footer.php");
   ?>
