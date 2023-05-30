@@ -22,8 +22,32 @@
         <div class="container-fluid">
 
             <!-- Main row -->
+            <div class="col-md-6">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Add Module</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form role="form" action="#" method="post">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Title</label>
+                                <input type="text" class="form-control" placeholder="Enter Title Name">
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="status" value="1" checked="checked">
+                                <label class="form-check-label" for="exampleCheck1">Do Active</label>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
 
-
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
             <!-- /.row (main row) -->
         </div><!-- /.container-fluid -->
