@@ -22,6 +22,14 @@
         <div class="container-fluid">
 
             <!-- Main row -->
+
+            <?php
+            if ($_POST)
+            {
+                $run = $DB->addModule();
+            }
+            ?>
+
             <div class="col-md-6">
                 <div class="card card-primary">
                     <div class="card-header">
@@ -33,7 +41,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Title</label>
-                                <input type="text" class="form-control" placeholder="Enter Title Name">
+                                <input type="text" class="form-control" name="title" placeholder="Enter Title Name">
                             </div>
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1" name="status" value="1" checked="checked">

@@ -98,5 +98,47 @@ class DB
         }
         $this->connection->query("SET CHARACTER SET utf8"); // character sorunu yaşanmaması için
     }
+
+    public function sefLink($value)
+    {
+        $find = array('Ç', 'Ş', 'Ğ', 'Ü', 'İ', 'Ö', 'ç', 'ş', 'ğ', 'ü', 'ö', 'ı', '+', '#','?','*','!','.','(',')');
+        $replace = array('c', 's', 'g', 'u', 'i', 'o', 'c', 's', 'g', 'u', 'o', 'i', 'plus', 'sharp','','','','','','');
+        $string = strtolower(str_replace($find, $replace, $value));
+        $string = preg_replace("@[^A-Za-z0-9\-_\.\+]@i", ' ', $string);
+        $string = trim(preg_replace('/\s+/', ' ', $string));
+        $string = str_replace(' ', '-', $string);
+        return $string;
+    }
+
+    public function addModule()
+    {
+        if (!empty($_POST["title"]))
+        {
+            $title = $_POST["title"];
+            if (!empty($_POST["status"]))
+            {
+                $status = 1;
+            }
+            else
+            {
+                $status = 2;
+            }
+            $tablo = str_replace("-", "", $this->sefLink($title));
+
+            $addModule = $this->runQuery("INSERT INTO modules", "SET title=?, tablo=?, status=?, date=?", array($title, $tablo, $status, date("Y-m-d")));
+            if ($addModule != false)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
 ?>
