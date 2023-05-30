@@ -65,5 +65,38 @@ class DB
             return false;
         }
     }
+
+    public function runQuery($tablo, $fields = "", $valuearray = "", $limit = "")
+    {
+        $this->connection->query("SET CHARACTER SET utf8");
+        if (!empty($fields) && !empty($valuearray))
+        {
+            $sql = $tablo." ".$fields;
+            if (!empty($limit))
+            {
+                $sql.=" LIMIT ".$limit;
+            }
+            $run = $this->connection->prepare($sql);
+            $result = $run->execute($valuearray);
+        }
+        else
+        {
+            $sql = $tablo;
+            if (!empty($limit))
+            {
+                $sql.=" LIMIT ".$limit;
+            }
+            $result = $this->connection->exec($sql);
+        }
+        if ($result != false)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        $this->connection->query("SET CHARACTER SET utf8"); // character sorunu yaşanmaması için
+    }
 }
 ?>
