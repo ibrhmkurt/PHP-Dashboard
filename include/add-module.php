@@ -29,17 +29,27 @@
                 $run = $DB->addModule();
                 if ($run != false)
                 {
-                    echo "Modülünüz başarıyla eklenmiştir.";
+                    echo '
+                        <div class="alert alert-success"> 
+                            Modülünüz başarıyla eklenmiştir.
+                        </div>
+                    ';
                 }
                 else
                 {
-                    echo "Modülünüz oluşturulurken bir sorunla karşılaştı. Sorunlar şunlar olabilir.<br>
-                          - Boş alan olabilir.<br>
-                          - Aynı isimde zaten kayıtlı bir veri mevcut olabilir.<br>
-                          - Sistemsel bir sorun oluşmuş olabilir.";
+                    echo '
+                        <div class="alert alert-danger">
+                            Modülünüz oluşturulurken bir sorunla karşılaştı. Sorunlar şunlar olabilir.<br>
+                            - Boş alan olabilir.<br>
+                            - Aynı isimde zaten kayıtlı bir veri mevcut olabilir.<br>
+                            - Sistemsel bir sorun oluşmuş olabilir.
+                        </div>
+                    ';
                 }
             }
             ?>
+
+
 
             <div class="col-md-6">
                 <div class="card card-primary">
@@ -48,7 +58,7 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form role="form" action="#" method="post">
+                    <form role="form" action="#" method="POST">
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Title</label>
