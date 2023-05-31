@@ -132,6 +132,20 @@ class DB
             }
             else
             {
+                $createTable = $this->runQuery('CREATE TABLE `'.$tablo.'` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `seflink` varchar(255) DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL,
+  `text` text DEFAULT NULL,
+  `picture` varchar(255) DEFAULT NULL,
+  `key` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `status` int(5) DEFAULT NULL,
+  `order_no` int(11) DEFAULT NULL,
+  `date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_turkish_ci;
+');
                 $addModule = $this->runQuery("INSERT INTO modules", "SET title=?, tablo=?, status=?, date=?", array($title, $tablo, $status, date("Y-m-d")));
                 if ($addModule != false)
                 {
