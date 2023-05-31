@@ -27,6 +27,17 @@
             if ($_POST)
             {
                 $run = $DB->addModule();
+                if ($run != false)
+                {
+                    echo "Modülünüz başarıyla eklenmiştir.";
+                }
+                else
+                {
+                    echo "Modülünüz oluşturulurken bir sorunla karşılaştı. Sorunlar şunlar olabilir.<br>
+                          - Boş alan olabilir.<br>
+                          - Aynı isimde zaten kayıtlı bir veri mevcut olabilir.<br>
+                          - Sistemsel bir sorun oluşmuş olabilir.";
+                }
             }
             ?>
 

@@ -125,14 +125,22 @@ class DB
             }
             $tablo = str_replace("-", "", $this->sefLink($title));
 
-            $addModule = $this->runQuery("INSERT INTO modules", "SET title=?, tablo=?, status=?, date=?", array($title, $tablo, $status, date("Y-m-d")));
-            if ($addModule != false)
+            $control = $this->getData("modules", "WHERE tablo=?", array($tablo), "ORDER BY id ASC", 1);
+            if ($control != false)
             {
-                return true;
+                return false;
             }
             else
             {
-                return false;
+                $addModule = $this->runQuery("INSERT INTO modules", "SET title=?, tablo=?, status=?, date=?", array($title, $tablo, $status, date("Y-m-d")));
+                if ($addModule != false)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
         else
