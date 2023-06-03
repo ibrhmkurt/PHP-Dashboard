@@ -34,6 +34,9 @@
                             Modülünüz başarıyla eklenmiştir.
                         </div>
                     ';
+                    ?>
+                    <meta http-equiv="refresh" content="3;url=<?=SITE?>">
+                    <?php
                 }
                 else
                 {

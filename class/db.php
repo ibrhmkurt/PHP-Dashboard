@@ -147,7 +147,8 @@ class DB
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_turkish_ci;
 ');
                 $addModule = $this->runQuery("INSERT INTO modules", "SET title=?, tablo=?, status=?, date=?", array($title, $tablo, $status, date("Y-m-d")));
-                
+                $addCategory = $this->runQuery("INSERT INTO categories", "SET title=?, seflink=?, tablo=?, status=?, date=?", array($title, $tablo, 'module,', 1, date("Y-m-d")));
+
                 if ($addModule != false)
                 {
                     return true;
@@ -163,5 +164,16 @@ class DB
             return false;
         }
     }
+
+    public function filter($value, $tf=false)
+    {
+        if ($tf == false)
+        {
+            $value = strip_tags($value);
+        }
+        $value = addslashes(trim($value));  // /' /"
+        return $value;
+    }
+
 }
 ?>
